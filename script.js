@@ -1,8 +1,7 @@
 /* ==========================================================================
    KOON · Landing B2B
    JS vanilla, sin dependencias:
-   - Scroll reveal con Intersection Observer
-   - Barra fija con estado al hacer scroll
+   (El movimiento vive en motion.js)
    - Acordeón accesible de preguntas frecuentes
    - Código QR simulado del ticket
    - Validación del formulario de demo
@@ -361,7 +360,7 @@
       document.getElementById('agenda-tu-demo'),
       document.querySelector('#facturacion .ticket'),
       document.getElementById('precios'),
-      document.querySelector('.site-footer')
+      document.querySelector('.footer')
     ].filter(Boolean);
 
     if (!targets.length) return;
@@ -427,9 +426,7 @@
     });
   }
 
-  initReveal();
   initWhatsAppLinks();
-  initHeader();
   initFaq();
   initQr();
   initForm();

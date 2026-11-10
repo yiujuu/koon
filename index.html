@@ -5,58 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Koon · Caja, tienda en línea y facturación para restaurantes</title>
   <meta name="description" content="Koon es la caja y la tienda en línea de tu restaurante: cobra, vende en línea y factura CFDI 4.0 sin comisión por pedido. Agenda una demo.">
-  <meta name="theme-color" content="#FFFFFF">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230F172A'/%3E%3Ctext x='32' y='46' font-family='Arial,Helvetica,sans-serif' font-size='38' font-weight='700' fill='%23FFFFFF' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
+  <meta name="theme-color" content="#F6F1E7">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23F0481E'/%3E%3Cpath d='M22 16v32M22 33l19-17M28 28l15 20' fill='none' stroke='%231C1612' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 
-  <!-- Habilita los estados iniciales de scroll reveal solo si hay JS -->
-  <script>document.documentElement.classList.add('js');</script>
+  <!-- Los estados iniciales de las animaciones solo existen si hay JS -->
+  <script>
+    (function (d) {
+      d.classList.add('js');
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('motion');
+      // Red de seguridad: si motion.js no llega a cargar, nada se queda oculto.
+      setTimeout(function () { if (!window.__koonMotion) d.classList.remove('motion'); }, 3500);
+    })(document.documentElement);
+  </script>
 
-  <!-- Tipografía -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="mockups.css">
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-  <!-- Sprite de iconos reutilizables -->
+  <!-- Sprite de iconos -->
   <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
     <symbol id="icon-check" viewBox="0 0 24 24">
-      <path d="M4.5 12.5 9 17l10.5-10.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M4.5 12.5 9 17l10.5-10.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24">
+      <path d="m6.5 6.5 11 11M17.5 6.5l-11 11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-arrow" viewBox="0 0 20 20">
+      <path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
     <symbol id="icon-wa" viewBox="0 0 24 24">
       <path d="M20.1 11.6a8.1 8.1 0 0 1-12 7.1L3.8 20l1.3-4.2a8.1 8.1 0 1 1 15-4.2Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
       <path d="M8.7 7.6c.2-.4.5-.4.8-.4h.5c.2 0 .4.1.5.4l.7 1.6c.1.2 0 .4-.1.5l-.5.6c-.1.1-.2.3 0 .5.4.7 1 1.3 1.7 1.7.2.1.4.1.5 0l.6-.5c.2-.2.4-.2.5-.1l1.6.7c.2.1.4.3.4.5v.5c0 .4-.2.8-.4 1-.4.4-1 .7-1.7.6-1.3-.1-2.7-.8-3.8-1.9-1.1-1.1-1.8-2.5-1.9-3.8 0-.6.2-1.2.6-1.6Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-star" viewBox="0 0 24 24">
+      <path d="M12 2.5c.6 5.6 3.9 8.900 9.500 9.500-5.600.6-8.900 3.900-9.500 9.500-.6-5.600-3.900-8.900-9.500-9.500 5.600-.6 8.900-3.900 9.500-9.500Z" fill="currentColor"/>
     </symbol>
   </svg>
 
   <!-- ============================================================
        BARRA FIJA
        ============================================================ -->
-  <header class="site-header" data-header>
-    <div class="wrap site-header__inner">
+  <header class="nav" data-header>
+    <div class="nav__pill">
       <a class="logo" href="#inicio" aria-label="Koon, ir al inicio">
-        <span class="logo__mark" aria-hidden="true">K</span>
+        <span class="logo__mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><path d="M22 16v32M22 33l19-17M28 28l15 20" fill="none" stroke="currentColor" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
         <span class="logo__name">Koon</span>
-        <span class="logo__sep" aria-hidden="true"></span>
         <span class="logo__maker">INDEXSA</span>
       </a>
 
-      <nav class="nav" aria-label="Principal">
-        <ul class="nav__list">
-          <li><a class="nav__link" href="#funciones">Funciones</a></li>
-          <li><a class="nav__link" href="#facturacion">Facturación</a></li>
-          <li><a class="nav__link" href="#precios">Precios</a></li>
-        </ul>
+      <nav class="nav__links" aria-label="Principal">
+        <a href="#funciones">Funciones</a>
+        <a href="#facturacion">Facturación</a>
+        <a href="#precios">Precios</a>
       </nav>
 
-      <a class="btn btn--primary btn--header" href="#agenda-tu-demo">
+      <a class="btn btn--primary btn--sm" href="#agenda-tu-demo">
         <span>Agenda tu demo</span>
-        <svg class="btn__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-          <path d="M4 10h11M11 5.5 15.5 10 11 14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <svg class="btn__arrow" viewBox="0 0 20 20" aria-hidden="true"><use href="#icon-arrow"></use></svg>
       </a>
     </div>
   </header>
@@ -64,706 +77,761 @@
   <main id="contenido">
 
     <!-- ============================================================
-         HERO
+         1 · HERO
          ============================================================ -->
     <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <img class="plate plate--h1" src="assets/img/plato-pozole-rojo.webp" alt="" width="720" height="720" data-plate data-speed="-0.35" data-spin="60">
+      <img class="plate plate--h2" src="assets/img/plato-quesadillas.webp" alt="" width="720" height="720" data-plate data-speed="-0.6" data-spin="-80">
+
       <div class="wrap hero__grid">
-
         <div class="hero__copy">
-          <p class="eyebrow">Para restaurantes en México</p>
+          <p class="chip" data-hero-in>
+            <span class="chip__dot" aria-hidden="true"></span>
+            Para restaurantes en México
+          </p>
 
-          <h1 class="hero__title" id="hero-title">
-            Tu restaurante vende en línea sin pagar comisión por pedido
+          <h1 class="hero__title" id="hero-title" data-split-hero>
+            Tu restaurante vende en línea <span class="hl">sin pagar comisión</span> por pedido
           </h1>
 
-          <p class="hero__sub">
+          <p class="hero__sub" data-hero-in>
             Cobra, vende en línea y factura desde el mismo lugar, con tu marca y sin comisión por pedido.
           </p>
 
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="#agenda-tu-demo">
+          <div class="hero__actions" data-hero-in>
+            <a class="btn btn--primary btn--lg" href="#agenda-tu-demo">
               <span>Agenda tu demo</span>
-              <svg class="btn__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M4 10h11M11 5.5 15.5 10 11 14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <svg class="btn__arrow" viewBox="0 0 20 20" aria-hidden="true"><use href="#icon-arrow"></use></svg>
             </a>
-            <a class="btn btn--outline" href="#tienda-en-linea">
-              Ver tienda de ejemplo
-            </a>
+            <a class="btn btn--ghost btn--lg" href="#tienda-en-linea">Ver tienda de ejemplo</a>
           </div>
 
-          <p class="hero__note">
+          <p class="hero__note" data-hero-in>
             Te mostramos la tienda y la pantalla de cocina con tu menú.
           </p>
         </div>
 
-        <!-- Composición: celular con el pedido + pantalla de cocina con la misma comanda -->
-        <figure class="hero__visual" aria-labelledby="visual-caption">
-          <div class="devices">
-
-            <div class="device device--kds">
-              <div class="monitor" role="img" aria-label="Pantalla de cocina mostrando a dos cocineros trabajando en un restaurante.">
-                <div class="monitor__screen">
-                  <div class="monitor__chrome" aria-hidden="true">
-                    <span class="monitor__dots"><i></i><i></i><i></i></span>
-                    <span class="monitor__title">Cocina</span>
-                    <span class="monitor__tag">Comandas</span>
-                  </div>
-                  <div class="monitor__body">
-                    <img
-                      class="monitor__photo zoom-media"
-                      src="https://images.pexels.com/photos/2696064/pexels-photo-2696064.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600"
-                      alt="Dos cocineros preparando platillos en una cocina de restaurante."
-                      loading="eager"
-                      fetchpriority="high"
-                      decoding="async"
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="monitor__stand" aria-hidden="true">
-                <span class="monitor__neck"></span>
-                <span class="monitor__base"></span>
-              </div>
+        <!-- El celular con el pedido y la pantalla de cocina con esa misma comanda -->
+        <div class="hero__art" data-hero-art data-step="0" role="img" aria-label="Un pedido de tacos hecho en la tienda en línea desde un celular aparece como comanda en la pantalla de cocina. La misma comanda en el celular y en la cocina.">
+          <div class="kds hero__kds" aria-hidden="true">
+            <div class="kds__bar">
+              <span class="kds__title">Cocina</span>
+              <span class="kds__station">Cocina caliente</span>
+              <span class="kds__live"><i></i>Comandas</span>
             </div>
-
-            <div class="device device--phone">
-              <div class="phone" role="img" aria-label="Celular mostrando un pedido de tacos en la tienda en línea.">
-                <span class="phone__notch" aria-hidden="true"></span>
-                <div class="phone__screen">
-                  <div class="phone__bar" aria-hidden="true">
-                    <span class="phone__brand">Koon</span>
-                    <span class="phone__context">Pedido en línea</span>
-                  </div>
-                  <div class="phone__body">
-                    <img
-                      class="phone__photo zoom-media"
-                      src="https://images.pexels.com/photos/2092507/pexels-photo-2092507.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900"
-                      alt="Tacos servidos con cilantro, cebolla y limón."
-                      loading="eager"
-                      decoding="async"
-                    >
-                  </div>
-                </div>
-              </div>
+            <div class="kds__grid">
+              <article class="kcard kcard--ok">
+                <header><b>Mesa 4</b><span>Luis</span><time data-timer="192">03:12</time></header>
+                <ul>
+                  <li><i>3</i><span>Tacos al pastor<small>Sin cebolla</small></span></li>
+                  <li><i>1</i><span>Quesadilla de flor</span></li>
+                </ul>
+              </article>
+              <article class="kcard kcard--warn">
+                <header><b>Para llevar</b><span>Caja</span><time data-timer="520">08:40</time></header>
+                <ul>
+                  <li><i>2</i><span>Pozole verde<small>Con tostadas</small></span></li>
+                  <li><i>1</i><span>Agua de jamaica</span></li>
+                </ul>
+              </article>
+              <article class="kcard kcard--new" data-kds-new>
+                <header><b>En línea</b><span>A-1042</span><time data-timer-new>00:00</time></header>
+                <ul>
+                  <li><i>3</i><span>Tacos al pastor</span></li>
+                  <li><i>1</i><span>Pozole rojo<small>Para recoger</small></span></li>
+                </ul>
+                <p class="kcard__paid">Pagado en línea</p>
+              </article>
             </div>
-
+            <div class="kds__foot">
+              <span>Por preparar</span>
+              <b>14</b> tacos de pastor <b>3</b> pozoles <b>2</b> quesadillas
+            </div>
           </div>
 
-          <figcaption class="devices__legend" id="visual-caption">
-            <svg class="devices__check" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M4.5 10.5 8 14l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span>La misma comanda en el celular y en la cocina.</span>
-          </figcaption>
-        </figure>
+          <div class="phone hero__phone" aria-hidden="true">
+            <div class="phone__screen">
+              <div class="store">
+                <div class="store__top">
+                  <span class="store__logo">TT</span>
+                  <span class="store__name"><b>Tu Taquería</b><small>Sucursal Centro · Abierta</small></span>
+                  <span class="store__lang">ES · MXN</span>
+                </div>
+                <div class="store__cats"><span class="is-on">Tacos</span><span>Antojitos</span><span>Caldos</span><span>Bebidas</span></div>
+                <div class="store__item">
+                  <img src="assets/img/plato-tacos.webp" alt="" width="720" height="720">
+                  <span class="store__txt"><b>Tacos al pastor</b><small>Orden de 3 · 15 min</small><em class="tag">Popular</em></span>
+                  <span class="store__price">$96</span>
+                  <span class="store__add is-added">3</span>
+                </div>
+                <div class="store__item">
+                  <img src="assets/img/plato-pozole-rojo.webp" alt="" width="720" height="720">
+                  <span class="store__txt"><b>Pozole rojo</b><small>Plato grande · 20 min</small><em class="tag tag--hot">Picante</em></span>
+                  <span class="store__price">$115</span>
+                  <span class="store__add" data-add>+</span>
+                </div>
+                <div class="store__item">
+                  <img src="assets/img/plato-quesadillas.webp" alt="" width="720" height="720">
+                  <span class="store__txt"><b>Quesadillas</b><small>Orden de 2 · 10 min</small></span>
+                  <span class="store__price">$78</span>
+                  <span class="store__add">+</span>
+                </div>
+                <div class="store__cart"><span>Pagar pedido</span><b data-total>$96</b></div>
+                <div class="store__done">
+                  <span class="store__tick"><svg viewBox="0 0 24 24"><use href="#icon-check"></use></svg></span>
+                  <b>Pedido confirmado</b>
+                  <small>Folio A-1042 · Ya está en cocina</small>
+                  <span class="store__sum">
+                    <span><i>3 Tacos al pastor</i><i>$96</i></span>
+                    <span><i>1 Pozole rojo</i><i>$115</i></span>
+                    <span><i>Total pagado</i><i>$211</i></span>
+                  </span>
+                  <span class="store__pick"><small>Código de recogida</small><b>482 913</b></span>
+                </div>
+              </div>
+            </div>
+          </div>
 
+          <div class="fly" aria-hidden="true">
+            <span>A-1042</span>
+          </div>
+        </div>
       </div>
 
-      <!-- Sellos de confianza -->
-      <div class="seals">
-        <div class="wrap">
-          <ul class="seals__list" aria-label="Lo que incluye Koon">
-            <li class="seal">
-              <span class="seal__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M20.4 13.1 13 20.5a1.9 1.9 0 0 1-2.7 0L3.5 13.4V3.5h9.9l7 7a1.9 1.9 0 0 1 0 2.6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-                  <circle cx="8" cy="8" r="1.2" stroke="currentColor" stroke-width="1.6"/>
-                </svg>
+      <!-- Sellos -->
+      <div class="wrap">
+        <ul class="seals" aria-label="Lo que incluye Koon">
+          <li class="seal" data-hero-in>
+            <span class="seal__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M20.4 13.1 13 20.5a1.9 1.9 0 0 1-2.7 0L3.5 13.4V3.5h9.9l7 7a1.9 1.9 0 0 1 0 2.6Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="8" cy="8" r="1.2" stroke="currentColor" stroke-width="1.7"/></svg>
+            </span>
+            <span class="seal__text"><strong>Sin comisión por pedido</strong><span>Lo que cobras es tuyo.</span></span>
+          </li>
+          <li class="seal" data-hero-in>
+            <span class="seal__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M13.5 3.5H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9l-5.5-5.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M13.5 3.5V9H19M8.5 13.5h7M8.500 17h4.500" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="seal__text"><strong>CFDI 4.0</strong><span>Factura desde el mismo lugar.</span></span>
+          </li>
+          <li class="seal" data-hero-in>
+            <span class="seal__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4.8 12.3a10.5 10.5 0 0 1 4.700-2.200M14.500 10.100a10.500 10.500 0 0 1 4.700 2.200M8.400 15.800a5.300 5.300 0 0 1 7.200 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="19" r="1" fill="currentColor"/><path d="M3.500 3.500l17 17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            </span>
+            <span class="seal__text"><strong>Funciona sin internet</strong><span>La cocina no se detiene.</span></span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Cinta: las cinco ideas de Koon -->
+    <div class="ribbon" aria-hidden="true">
+      <div class="ribbon__track" data-marquee>
+        <div class="ribbon__set">
+          <span>Tienda en línea propia</span><svg viewBox="0 0 24 24"><use href="#icon-star"></use></svg>
+          <span>Tus clientes se facturan solos</span><svg viewBox="0 0 24 24"><use href="#icon-star"></use></svg>
+          <span>Hecho para México</span><svg viewBox="0 0 24 24"><use href="#icon-star"></use></svg>
+          <span>Sigue cobrando sin internet</span><svg viewBox="0 0 24 24"><use href="#icon-star"></use></svg>
+          <span>Multisucursal desde el día uno</span><svg viewBox="0 0 24 24"><use href="#icon-star"></use></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         3 · EL PROBLEMA
+         ============================================================ -->
+    <section class="section problem" id="problema" aria-labelledby="problem-title">
+      <div class="wrap problem__grid">
+        <div class="problem__head">
+          <p class="eyebrow" data-reveal>El problema</p>
+          <h2 class="h2" id="problem-title" data-split>El día a día en tu restaurante no tiene por qué ser así</h2>
+          <p class="lead" data-reveal>Cuatro fugas de tiempo y margen que se sienten todos los días.</p>
+          <p class="problem__count" aria-hidden="true"><b data-pain-count>01</b><span>/ 04</span></p>
+        </div>
+
+        <div class="problem__stack">
+          <article class="pain" data-pain style="--i:0; --r:-2deg">
+            <div class="pain__paper">
+              <p class="pain__no">Fuga 01</p>
+              <span class="pain__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.500" stroke="currentColor" stroke-width="1.600"/><path d="m9 15 6-6" stroke="currentColor" stroke-width="1.600" stroke-linecap="round"/><circle cx="9.300" cy="9.300" r=".9" fill="currentColor"/><circle cx="14.700" cy="14.700" r=".9" fill="currentColor"/></svg>
               </span>
-              <span class="seal__text">
-                <strong class="seal__title">Sin comisión por pedido</strong>
-                <span class="seal__note">Lo que cobras es tuyo.</span>
+              <h3>Comisiones que se comen el margen</h3>
+              <p>La app cobra por pedido y tú pones la operación. El margen se va en la comisión.</p>
+            </div>
+          </article>
+
+          <article class="pain" data-pain style="--i:1; --r:1.6deg">
+            <div class="pain__paper">
+              <p class="pain__no">Fuga 02</p>
+              <span class="pain__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M13.500 3.500H6.500A1.500 1.500 0 0 0 5 5v14a1.500 1.500 0 0 0 1.500 1.500h7" stroke="currentColor" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.500 3.500 18 8v4M13.500 3.500V8H18M8 12h5M8 15.500h3.500" stroke="currentColor" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"/><path d="m15.500 16.400 4.200-4.200a1.250 1.250 0 0 1 1.800 1.800l-4.200 4.200-2.300.5.5-2.300Z" stroke="currentColor" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
-            </li>
-            <li class="seal">
-              <span class="seal__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M13.5 3.5H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9l-5.5-5.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-                  <path d="M13.5 3.5V9H19M8.5 13.5h7M8.5 17h4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+              <h3>Facturas a mano</h3>
+              <p>Persigues datos, capturas en el portal y el cliente se va sin factura.</p>
+            </div>
+          </article>
+
+          <article class="pain" data-pain style="--i:2; --r:-1.2deg">
+            <div class="pain__paper">
+              <p class="pain__no">Fuga 03</p>
+              <span class="pain__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6 3.500h12v17l-2.500-1.500-2 1.500-2.500-1.500-2 1.500L6 19V3.500Z" stroke="currentColor" stroke-width="1.600" stroke-linejoin="round"/><path d="M9 8h6M9 11.500h4" stroke="currentColor" stroke-width="1.600" stroke-linecap="round"/><path d="M17.500 14.500h3" stroke="currentColor" stroke-width="1.600" stroke-linecap="round" stroke-dasharray="1 3"/></svg>
               </span>
-              <span class="seal__text">
-                <strong class="seal__title">CFDI 4.0</strong>
-                <span class="seal__note">Factura desde el mismo lugar.</span>
+              <h3>Comandas que se pierden</h3>
+              <p>El papel se traspapela y el platillo sale tarde, frío o no sale.</p>
+            </div>
+          </article>
+
+          <article class="pain" data-pain style="--i:3; --r:2deg">
+            <div class="pain__paper">
+              <p class="pain__no">Fuga 04</p>
+              <span class="pain__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M9.500 13.500 7 16a2.800 2.800 0 0 1-4-4l2.500-2.500a2.800 2.800 0 0 1 4 0" stroke="currentColor" stroke-width="1.600" stroke-linecap="round"/><path d="M14.500 10.500 17 8a2.800 2.800 0 0 1 4 4l-2.500 2.500a2.800 2.800 0 0 1-4 0" stroke="currentColor" stroke-width="1.600" stroke-linecap="round"/><path d="m8.500 15.500 7-7" stroke="currentColor" stroke-width="1.600" stroke-linecap="round" stroke-dasharray="2 4"/></svg>
               </span>
-            </li>
-            <li class="seal">
-              <span class="seal__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M4.8 12.3a10.5 10.5 0 0 1 4.7-2.2M14.5 10.1a10.5 10.5 0 0 1 4.7 2.2M8.4 15.8a5.3 5.3 0 0 1 7.2 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                  <circle cx="12" cy="19" r="1" fill="currentColor"/>
-                  <path d="M3.5 3.5l17 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-              </span>
-              <span class="seal__text">
-                <strong class="seal__title">Funciona sin internet</strong>
-                <span class="seal__note">La cocina no se detiene.</span>
-              </span>
-            </li>
-          </ul>
+              <h3>Sistemas que no cuadran</h3>
+              <p>La caja dice una cosa, la cocina otra y el corte no cierra.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- ============================================================
-         3. EL PROBLEMA
+         4 · CÓMO FUNCIONA
          ============================================================ -->
-    <section class="section section--gris section--problem" id="problema" aria-labelledby="problem-title">
+    <section class="section flow" id="como-funciona" aria-labelledby="flow-title">
       <div class="wrap">
-        <div class="section__head section__head--split">
+        <div class="head head--split">
           <div>
-            <p class="eyebrow">El problema</p>
-            <h2 data-reveal class="section__title" id="problem-title">El día a día en tu restaurante no tiene por qué ser así</h2>
+            <p class="eyebrow" data-reveal>Cómo funciona</p>
+            <h2 class="h2" id="flow-title" data-split>Así funciona, de principio a fin</h2>
           </div>
-          <p class="section__lead" data-reveal>Cuatro fugas de tiempo y margen que se sienten todos los días.</p>
+          <p class="lead" data-reveal>Una comanda, un pedido, un ticket. Sin capturar dos veces.</p>
         </div>
 
-        <div class="pain-grid">
-          <article class="pain-card" data-reveal>
-            <span class="pain-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.6"/>
-                <path d="m9 15 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                <circle cx="9.3" cy="9.3" r=".9" fill="currentColor"/>
-                <circle cx="14.7" cy="14.7" r=".9" fill="currentColor"/>
-              </svg>
+        <div class="flow__rail" data-flow>
+          <div class="flow__line" aria-hidden="true">
+            <span class="flow__line-fill" data-flow-fill></span>
+            <span class="flow__token" data-flow-token>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 3.500h12v17l-2.500-1.500-2 1.500-2.500-1.500-2 1.500L6 19V3.500Z" fill="currentColor"/></svg>
             </span>
-            <h3>Comisiones que se comen el margen</h3>
-            <p>La app cobra por pedido y tú pones la operación. El margen se va en la comisión.</p>
-          </article>
+          </div>
 
-          <article class="pain-card" data-reveal>
-            <span class="pain-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M13.5 3.5H6.5A1.5 1.5 0 0 0 5 5v14a1.5 1.5 0 0 0 1.5 1.5h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M13.5 3.5 18 8v4M13.5 3.5V8H18M8 12h5M8 15.5h3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="m15.5 16.4 4.2-4.2a1.25 1.25 0 0 1 1.8 1.8l-4.2 4.2-2.3.5.5-2.3Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <h3>Facturas a mano</h3>
-            <p>Persigues datos, capturas en el portal y el cliente se va sin factura.</p>
-          </article>
+          <ol class="flow__steps">
+            <li class="step" data-step-item>
+              <div class="step__art" aria-hidden="true">
+                <div class="mini mini--pay">
+                  <span class="mini__row"><i></i><b></b></span>
+                  <span class="mini__row"><i></i><b></b></span>
+                  <span class="mini__btn">Pagar $211</span>
+                </div>
+              </div>
+              <p class="step__no">Paso 01</p>
+              <h3>El cliente pide y paga</h3>
+              <p>Elige de tu menú, paga en línea y recibe su confirmación.</p>
+            </li>
 
-          <article class="pain-card" data-reveal>
-            <span class="pain-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M6 3.5h12v17l-2.5-1.5-2 1.5-2.5-1.5-2 1.5L6 19V3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-                <path d="M9 8h6M9 11.5h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M17.5 14.5h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="1 3"/>
-              </svg>
-            </span>
-            <h3>Comandas que se pierden</h3>
-            <p>El papel se traspapela y el platillo sale tarde, frío o no sale.</p>
-          </article>
+            <li class="step" data-step-item>
+              <div class="step__art" aria-hidden="true">
+                <div class="mini mini--kds">
+                  <span class="mini__head"><b>En línea</b><em>00:12</em></span>
+                  <span class="mini__li">3 Tacos al pastor</span>
+                  <span class="mini__li">1 Pozole rojo</span>
+                </div>
+              </div>
+              <p class="step__no">Paso 02</p>
+              <h3>La cocina lo recibe</h3>
+              <p>La comanda aparece en la pantalla, sin papel que se pierda.</p>
+            </li>
 
-          <article class="pain-card" data-reveal>
-            <span class="pain-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M9.5 13.5 7 16a2.8 2.8 0 0 1-4-4l2.5-2.5a2.8 2.8 0 0 1 4 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M14.5 10.5 17 8a2.8 2.8 0 0 1 4 4l-2.5 2.5a2.8 2.8 0 0 1-4 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="m8.5 15.5 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="2 4"/>
-              </svg>
-            </span>
-            <h3>Sistemas que no cuadran</h3>
-            <p>La caja dice una cosa, la cocina otra y el corte no cierra.</p>
-          </article>
+            <li class="step" data-step-item>
+              <div class="step__art" aria-hidden="true">
+                <div class="mini mini--ticket">
+                  <span class="mini__li"><b>Total</b><b>$211.00</b></span>
+                  <span class="mini__dash"></span>
+                  <span class="mini__stamp">Entregado</span>
+                </div>
+              </div>
+              <p class="step__no">Paso 03</p>
+              <h3>Caja entrega</h3>
+              <p>Cobras, imprimes el ticket y cierras la cuenta.</p>
+            </li>
+
+            <li class="step" data-step-item>
+              <div class="step__art" aria-hidden="true">
+                <div class="mini mini--qr">
+                  <span class="mini__qr"></span>
+                  <span class="mini__cfdi"><svg viewBox="0 0 24 24"><use href="#icon-check"></use></svg>CFDI 4.0</span>
+                </div>
+              </div>
+              <p class="step__no">Paso 04</p>
+              <h3>El cliente se factura solo</h3>
+              <p>Escanea el QR del ticket y recibe su CFDI 4.0.</p>
+            </li>
+          </ol>
         </div>
       </div>
     </section>
 
     <!-- ============================================================
-         4. CÓMO FUNCIONA
+         5 · FUNCIONES
          ============================================================ -->
-    <section class="section section--flow" id="como-funciona" aria-labelledby="flow-title">
+    <section class="section features" id="funciones" aria-labelledby="features-title">
       <div class="wrap">
-        <div class="section__head section__head--center">
-          <p class="eyebrow">Cómo funciona</p>
-          <h2 data-reveal class="section__title" id="flow-title">Así funciona, de principio a fin</h2>
-          <p class="section__lead" data-reveal>Una comanda, un pedido, un ticket. Sin capturar dos veces.</p>
+        <div class="head">
+          <p class="eyebrow" data-reveal>Funciones</p>
+          <h2 class="h2" id="features-title" data-split>Todo tu restaurante, en un solo lugar</h2>
+          <p class="lead" data-reveal>La caja, la cocina, la tienda en línea y la facturación, con el mismo pedido.</p>
         </div>
 
-        <ol class="flow">
-          <li class="flow-step" data-reveal>
-            <span class="flow-step__kicker">Paso 01</span>
-            <span class="flow-step__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <rect x="6.5" y="2.5" width="11" height="19" rx="2.5" stroke="currentColor" stroke-width="1.6"/>
-                <path d="M10 5.5h4M9 9.5h6M9 13h6M10 18.5h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-            </span>
-            <h3>El cliente pide y paga</h3>
-            <p>Elige de tu menú, paga en línea y recibe su confirmación.</p>
-          </li>
+        <div class="feats" data-feats>
+          <div class="feats__list">
 
-          <li class="flow-step" data-reveal>
-            <span class="flow-step__kicker">Paso 02</span>
-            <span class="flow-step__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <rect x="2.5" y="4" width="19" height="13" rx="2" stroke="currentColor" stroke-width="1.6"/>
-                <path d="M9 20.5h6M12 17v3.5M6 8h4M6 11.5h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-            </span>
-            <h3>La cocina lo recibe</h3>
-            <p>La comanda aparece en la pantalla, sin papel que se pierda.</p>
-          </li>
-
-          <li class="flow-step" data-reveal>
-            <span class="flow-step__kicker">Paso 03</span>
-            <span class="flow-step__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M5 9h14v10.5H5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-                <path d="M8.5 9V5.5h7V9M8 13h8M8 16.5h4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <h3>Caja entrega</h3>
-            <p>Cobras, imprimes el ticket y cierras la cuenta.</p>
-          </li>
-
-          <li class="flow-step" data-reveal>
-            <span class="flow-step__kicker">Paso 04</span>
-            <span class="flow-step__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <rect x="4" y="3.5" width="16" height="17" rx="2" stroke="currentColor" stroke-width="1.6"/>
-                <path d="M8 8h3v3H8zM13.5 8h2.5M13.5 11h2.5M8 14h3M8 17h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <h3>El cliente se factura solo</h3>
-            <p>Escanea el QR del ticket y recibe su CFDI 4.0.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         5. FUNCIONES
-         ============================================================ -->
-    <section class="section section--features" id="funciones" aria-labelledby="features-title">
-      <div class="wrap">
-        <div class="section__head">
-          <p class="eyebrow">Funciones</p>
-          <h2 data-reveal class="section__title" id="features-title">Todo tu restaurante, en un solo lugar</h2>
-          <p class="section__lead" data-reveal>La caja, la cocina, la tienda en línea y la facturación, con el mismo pedido.</p>
-        </div>
-
-        <div class="features">
-
-          <article class="feature" data-reveal>
-            <div class="feature__copy">
-              <p class="feature__index">01 · Punto de venta</p>
-              <h3 class="feature__title">Punto de venta y cocina</h3>
-              <ul class="check-list">
-                <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>La comanda del mesero llega directo a cocina.</span></li>
-                <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Cobras, imprimes ticket y cierras la cuenta.</span></li>
-                <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Propinas, para llevar y modificadores, sin notas aparte.</span></li>
-                <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>El corte de caja cuadra con lo que se vendió.</span></li>
-              </ul>
-              <div class="feature__translation">
-                <span class="feature__translation-label">En la práctica</span>
-                <p>La comanda del mesero, la pantalla de cocina y el corte de caja son el mismo pedido. No lo capturas dos veces.</p>
-              </div>
-            </div>
-            <div class="feature__media">
-              <div class="shot">
-                <div class="shot__bar" aria-hidden="true">
-                  <span class="shot__dots"><i></i><i></i><i></i></span>
-                  <span class="shot__name">Koon · Caja y cocina</span>
+            <article class="feat is-active" data-feat="0">
+              <div class="feat__copy">
+                <p class="feat__index"><b>01</b> Punto de venta</p>
+                <h3 class="feat__title">Punto de venta y cocina</h3>
+                <ul class="checks">
+                  <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>La comanda del mesero llega directo a cocina.</span></li>
+                  <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Cobras, imprimes ticket y cierras la cuenta.</span></li>
+                  <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Propinas, para llevar y modificadores, sin notas aparte.</span></li>
+                  <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>El corte de caja cuadra con lo que se vendió.</span></li>
+                </ul>
+                <div class="practice">
+                  <span class="practice__label">En la práctica</span>
+                  <p>La comanda del mesero, la pantalla de cocina y el corte de caja son el mismo pedido. No lo capturas dos veces.</p>
                 </div>
-                <div class="shot__body">
-                  <div class="shot__photo-wrap">
-                    <img
-                      class="shot__photo zoom-media"
-                      src="https://images.pexels.com/photos/887827/pexels-photo-887827.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                      alt="Chef sonriendo con un platillo en una cocina de restaurante."
-                      loading="lazy"
-                      decoding="async"
-                    >
+              </div>
+              <div class="feat__media" data-feat-media="0" role="img" aria-label="Pantalla de caja de Koon con la cuenta de la mesa 4, el desglose de impuestos, la propina y los botones de cobro.">
+                <div class="pos" aria-hidden="true">
+                  <div class="pos__bar"><span class="pos__brand">Koon · Caja</span><span class="pos__tabs"><i class="is-on">Salón</i><i>Terraza</i><i>Barra</i></span><span class="pos__online">En línea <b>2</b></span></div>
+                  <div class="pos__body">
+                    <div class="pos__tables">
+                      <span class="t is-busy">1</span><span class="t">2</span><span class="t is-busy">3</span><span class="t is-sel">4</span>
+                      <span class="t">5</span><span class="t is-busy">6</span><span class="t">7</span><span class="t">8</span>
+                      <span class="t is-busy">9</span><span class="t">10</span><span class="t">11</span><span class="t is-busy">12</span>
+                    </div>
+                    <div class="pos__check">
+                      <p class="pos__check-head"><b>Mesa 4</b><span>3 comensales · Luis</span></p>
+                      <p class="pos__li"><span>3 Tacos al pastor</span><b>$288.00</b></p>
+                      <p class="pos__li"><span>1 Quesadilla de flor</span><b>$78.00</b></p>
+                      <p class="pos__li"><span>2 Agua de jamaica</span><b>$70.00</b></p>
+                      <p class="pos__li pos__li--sub"><span>Subtotal</span><b>$375.86</b></p>
+                      <p class="pos__li pos__li--sub"><span>IVA 16 %</span><b>$60.14</b></p>
+                      <p class="pos__li pos__li--sub"><span>Propina</span><b>$43.60</b></p>
+                      <p class="pos__total"><span>Total</span><b>$479.60</b></p>
+                      <p class="pos__pay"><i>Efectivo</i><i class="is-on">Tarjeta</i><i>Dividir</i></p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </article>
+            </article>
 
-          <article class="feature" data-reveal id="tienda-en-linea">
-            <div class="feature__copy">
-              <p class="feature__index">02 · Tienda en línea</p>
-              <h3 class="feature__title">Tienda en línea propia</h3>
-              <ul class="check-list">
-                <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Tu menú y tu marca, en tu propia tienda.</span></li>
-                <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Tus clientes piden y pagan en línea.</span></li>
-                <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Pedidos para llevar, sin comisión por pedido.</span></li>
-                <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Tú decides cómo se ve y qué se vende.</span></li>
-              </ul>
-              <div class="feature__translation">
-                <span class="feature__translation-label">En la práctica</span>
-                <p>Tu cliente entra a tu tienda, no a un directorio. El pedido llega a tu cocina y el cliente es tuyo.</p>
-              </div>
-            </div>
-            <div class="feature__media">
-              <div class="shot">
-                <div class="shot__bar" aria-hidden="true">
-                  <span class="shot__dots"><i></i><i></i><i></i></span>
-                  <span class="shot__name">Koon · Tienda en línea</span>
+            <article class="feat" data-feat="1" id="tienda-en-linea">
+              <div class="feat__copy">
+                <p class="feat__index"><b>02</b> Tienda en línea</p>
+                <h3 class="feat__title">Tienda en línea propia</h3>
+                <ul class="checks">
+                  <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Tu menú y tu marca, en tu propia tienda.</span></li>
+                  <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Tus clientes piden y pagan en línea.</span></li>
+                  <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Pedidos para llevar, sin comisión por pedido.</span></li>
+                  <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Tú decides cómo se ve y qué se vende.</span></li>
+                </ul>
+                <div class="practice">
+                  <span class="practice__label">En la práctica</span>
+                  <p>Tu cliente entra a tu tienda, no a un directorio. El pedido llega a tu cocina y el cliente es tuyo.</p>
                 </div>
-                <div class="shot__body">
-                  <div class="shot__photo-wrap">
-                    <img
-                      class="shot__photo zoom-media"
-                      src="https://images.pexels.com/photos/4958792/pexels-photo-4958792.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                      alt="Tacos mexicanos con cilantro, cebolla y salsa."
-                      loading="lazy"
-                      decoding="async"
-                    >
+              </div>
+              <div class="feat__media" data-feat-media="1" role="img" aria-label="Tienda en línea de ejemplo en un celular, con platillos, precios y el seguimiento de un pedido listo para recoger.">
+                <div class="duo" aria-hidden="true">
+                  <div class="phone">
+                    <div class="phone__screen">
+                      <div class="store">
+                        <div class="store__top">
+                          <span class="store__logo">TT</span>
+                          <span class="store__name"><b>Tu Taquería</b><small>Sucursal Centro · Abierta</small></span>
+                          <span class="store__lang">ES · MXN</span>
+                        </div>
+                        <div class="store__cats"><span>Tacos</span><span class="is-on">Antojitos</span><span>Caldos</span><span>Bebidas</span></div>
+                        <div class="store__item">
+                          <img src="assets/img/plato-dorados.webp" alt="" loading="lazy" width="720" height="720">
+                          <span class="store__txt"><b>Tacos dorados</b><small>Orden de 4 · 15 min</small><em class="tag">Popular</em></span>
+                          <span class="store__price">$89</span>
+                          <span class="store__add">+</span>
+                        </div>
+                        <div class="store__item">
+                          <img src="assets/img/plato-quesadillas.webp" alt="" loading="lazy" width="720" height="720">
+                          <span class="store__txt"><b>Quesadillas</b><small>Orden de 2 · 10 min</small></span>
+                          <span class="store__price">$78</span>
+                          <span class="store__add is-added">1</span>
+                        </div>
+                        <div class="store__item">
+                          <img src="assets/img/plato-pozole.webp" alt="" loading="lazy" width="720" height="720">
+                          <span class="store__txt"><b>Pozole verde</b><small>Plato grande · 20 min</small><em class="tag tag--sold">Agotado</em></span>
+                          <span class="store__price">$115</span>
+                          <span class="store__add is-off">+</span>
+                        </div>
+                        <div class="store__cart"><span>Pagar pedido</span><b>$78</b></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="track">
+                    <p class="track__head"><b>Tu pedido</b><span>A-1042</span></p>
+                    <ol class="track__steps">
+                      <li class="is-done">Aceptado</li>
+                      <li class="is-done">En preparación</li>
+                      <li class="is-now">Listo para recoger</li>
+                      <li>Entregado</li>
+                    </ol>
+                    <p class="track__code"><span>Código de recogida</span><b>482 913</b></p>
                   </div>
                 </div>
               </div>
-            </div>
-          </article>
+            </article>
 
-          <article class="feature" data-reveal>
-            <div class="feature__copy">
-              <p class="feature__index">03 · Facturación</p>
-              <h3 class="feature__title">Facturación</h3>
-              <ul class="check-list">
-                <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>CFDI 4.0 desde el ticket o el pedido en línea.</span></li>
-                <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Tus datos fiscales se capturan una sola vez.</span></li>
-                <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Tu cliente se factura solo con el QR.</span></li>
-                <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Tu caja no se detiene por una factura.</span></li>
-              </ul>
-              <div class="feature__translation">
-                <span class="feature__translation-label">En la práctica</span>
-                <p>El cliente escanea el QR y se factura solo. Tu cajero no deja de cobrar.</p>
-              </div>
-            </div>
-            <div class="feature__media">
-              <div class="shot">
-                <div class="shot__bar" aria-hidden="true">
-                  <span class="shot__dots"><i></i><i></i><i></i></span>
-                  <span class="shot__name">Koon · Facturación</span>
+            <article class="feat" data-feat="2">
+              <div class="feat__copy">
+                <p class="feat__index"><b>03</b> Facturación</p>
+                <h3 class="feat__title">Facturación</h3>
+                <ul class="checks">
+                  <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>CFDI 4.0 desde el ticket o el pedido en línea.</span></li>
+                  <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Tus datos fiscales se capturan una sola vez.</span></li>
+                  <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Tu cliente se factura solo con el QR.</span></li>
+                  <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Tu caja no se detiene por una factura.</span></li>
+                </ul>
+                <div class="practice">
+                  <span class="practice__label">En la práctica</span>
+                  <p>El cliente escanea el QR y se factura solo. Tu cajero no deja de cobrar.</p>
                 </div>
-                <div class="shot__body">
-                  <div class="shot__photo-wrap">
-                    <img
-                      class="shot__photo zoom-media"
-                      src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                      alt="Café latte servido en una taza sobre una mesa."
-                      loading="lazy"
-                      decoding="async"
-                    >
+              </div>
+              <div class="feat__media" data-feat-media="2" role="img" aria-label="Portal de facturación en un celular: el cliente captura sus datos fiscales y recibe su CFDI 4.0 en PDF y XML por correo.">
+                <div class="duo duo--inv" aria-hidden="true">
+                  <div class="phone">
+                    <div class="phone__screen">
+                      <div class="portal">
+                        <p class="portal__top"><b>Factura tu consumo</b><span>Tu Taquería · Centro</span></p>
+                        <p class="portal__ticket"><span>Ticket P-00123</span><b>$479.60</b></p>
+                        <p class="portal__field"><span>RFC</span><b>XAXX010101000</b></p>
+                        <p class="portal__field"><span>Nombre o razón social</span><b>Público en general</b></p>
+                        <p class="portal__field portal__field--half"><span>Código postal</span><b>91700</b></p>
+                        <p class="portal__field portal__field--half"><span>Uso de CFDI</span><b>Gastos en general</b></p>
+                        <p class="portal__btn">Generar factura</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mail">
+                    <p class="mail__head"><span class="mail__ok"><svg viewBox="0 0 24 24"><use href="#icon-check"></use></svg></span><b>Factura enviada</b></p>
+                    <p class="mail__txt">Tu CFDI 4.0 llegó a tu correo.</p>
+                    <p class="mail__files"><span>PDF</span><span>XML</span></p>
                   </div>
                 </div>
               </div>
-            </div>
-          </article>
+            </article>
 
-          <article class="feature" data-reveal>
-            <div class="feature__copy">
-              <p class="feature__index">04 · Multisucursal</p>
-              <h3 class="feature__title">Multisucursal</h3>
-              <ul class="check-list">
-                <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Cada sucursal con su caja, su menú y su equipo.</span></li>
-                <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Permisos distintos para cajero, mesero y encargado.</span></li>
-                <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Cortes por sucursal, sin juntar hojas.</span></li>
-                <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Ves todo desde el mismo lugar.</span></li>
-              </ul>
-              <div class="feature__translation">
-                <span class="feature__translation-label">En la práctica</span>
-                <p>El corte de cada sucursal llega solo. Tú lo ves junto, sin pedirlo por mensaje.</p>
-              </div>
-            </div>
-            <div class="feature__media">
-              <div class="shot">
-                <div class="shot__bar" aria-hidden="true">
-                  <span class="shot__dots"><i></i><i></i><i></i></span>
-                  <span class="shot__name">Koon · Multisucursal</span>
+            <article class="feat" data-feat="3">
+              <div class="feat__copy">
+                <p class="feat__index"><b>04</b> Multisucursal</p>
+                <h3 class="feat__title">Multisucursal</h3>
+                <ul class="checks">
+                  <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Cada sucursal con su caja, su menú y su equipo.</span></li>
+                  <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Permisos distintos para cajero, mesero y encargado.</span></li>
+                  <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Cortes por sucursal, sin juntar hojas.</span></li>
+                  <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Ves todo desde el mismo lugar.</span></li>
+                </ul>
+                <div class="practice">
+                  <span class="practice__label">En la práctica</span>
+                  <p>El corte de cada sucursal llega solo. Tú lo ves junto, sin pedirlo por mensaje.</p>
                 </div>
-                <div class="shot__body">
-                  <div class="shot__photo-wrap">
-                    <img
-                      class="shot__photo zoom-media"
-                      src="https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                      alt="Interior de un restaurante con mesas y sillas preparadas."
-                      loading="lazy"
-                      decoding="async"
-                    >
+              </div>
+              <div class="feat__media" data-feat-media="3" role="img" aria-label="Panel de sucursales de Koon con tres sucursales, su estado, su corte del día y el precio de un platillo en cada una.">
+                <div class="panel" aria-hidden="true">
+                  <p class="panel__top"><b>Sucursales</b><span>Menú maestro · Tu Taquería</span></p>
+                  <div class="branch">
+                    <span class="branch__pin">C</span>
+                    <span class="branch__name"><b>Centro</b><small>Caja abierta · 4 en cocina</small></span>
+                    <span class="pill pill--ok">Abierta</span>
+                    <span class="branch__bar"><i style="--w:82%"></i></span>
+                    <span class="branch__price">Tacos al pastor <b>$96</b></span>
                   </div>
+                  <div class="branch">
+                    <span class="branch__pin">B</span>
+                    <span class="branch__name"><b>Boca del Río</b><small>Caja abierta · 9 en cocina</small></span>
+                    <span class="pill pill--warn">Saturada</span>
+                    <span class="branch__bar"><i style="--w:64%"></i></span>
+                    <span class="branch__price">Tacos al pastor <b>$102</b></span>
+                  </div>
+                  <div class="branch">
+                    <span class="branch__pin">X</span>
+                    <span class="branch__name"><b>Xalapa</b><small>Corte impreso · turno cerrado</small></span>
+                    <span class="pill">Cerrada</span>
+                    <span class="branch__bar"><i style="--w:46%"></i></span>
+                    <span class="branch__price">Tacos al pastor <b>$96</b></span>
+                  </div>
+                  <p class="panel__roles"><span>Gerente</span><span>Cajero</span><span>Mesero</span><span>Cocina</span></p>
                 </div>
               </div>
-            </div>
-          </article>
+            </article>
 
+          </div>
+
+          <!-- En escritorio, las capturas se mudan a este escenario fijo -->
+          <div class="feats__stage" data-feats-stage aria-hidden="true"></div>
         </div>
       </div>
     </section>
 
     <!-- ============================================================
-         6. FACTURACIÓN
+         6 · FACTURACIÓN
          ============================================================ -->
-    <section class="section section--invoice" id="facturacion" aria-labelledby="invoice-title">
+    <section class="section invoice" id="facturacion" aria-labelledby="invoice-title">
       <div class="wrap invoice__grid">
         <div class="invoice__copy">
-          <p class="eyebrow">Facturación</p>
-          <h2 data-reveal class="section__title invoice__title" id="invoice-title">Tus clientes se facturan solos</h2>
-          <p class="invoice__lead" data-reveal>El cliente escanea el QR de su ticket, captura sus datos y recibe su CFDI 4.0 por correo. Sin filas en caja. También para pedidos en línea.</p>
+          <p class="eyebrow" data-reveal>Facturación</p>
+          <h2 class="h2 h2--xl" id="invoice-title" data-split>Tus clientes se facturan solos</h2>
+          <p class="lead" data-reveal>El cliente escanea el QR de su ticket, captura sus datos y recibe su CFDI 4.0 por correo. Sin filas en caja. También para pedidos en línea.</p>
 
-          <ul class="check-list check-list--lg invoice__checks" data-reveal>
-            <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Escanea el QR de su ticket.</span></li>
-            <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Captura sus datos una sola vez.</span></li>
-            <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Recibe su CFDI 4.0 por correo.</span></li>
-          </ul>
+          <ol class="inv-steps">
+            <li data-reveal style="--d:0s"><b>1</b><span>Escanea el QR de su ticket.</span></li>
+            <li data-reveal style="--d:.08s"><b>2</b><span>Captura sus datos una sola vez.</span></li>
+            <li data-reveal style="--d:.16s"><b>3</b><span>Recibe su CFDI 4.0 por correo.</span></li>
+          </ol>
         </div>
 
-        <div class="invoice__visual" data-reveal>
-          <article class="ticket" aria-label="Ticket de ejemplo con un código QR para facturar">
-            <div class="ticket__head">
-              <span class="ticket__brand">Koon</span>
-              <span class="ticket__kind">Ticket de venta</span>
-            </div>
-
-            <div class="ticket__body">
-              <p class="ticket__kicker">Factura tu consumo</p>
-              <div class="ticket__qr">
-                <div class="qr" data-qr role="img" aria-label="Código QR de ejemplo para facturar"></div>
+        <div class="invoice__visual" data-printer>
+          <div class="printer" aria-hidden="true"><span></span></div>
+          <div class="printer__feed">
+            <article class="ticket" data-ticket aria-label="Ticket de ejemplo con un código QR para facturar">
+              <div class="ticket__head">
+                <span class="ticket__brand">Koon</span>
+                <span class="ticket__kind">Ticket de venta</span>
               </div>
-              <p class="ticket__hint">Escanea con la cámara de tu celular</p>
-              <p class="ticket__cfdi">
-                <svg class="ticket__check" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg>
-                CFDI 4.0
-              </p>
-            </div>
-
-            <div class="ticket__perf" aria-hidden="true"></div>
-
-            <div class="ticket__foot">
-              <p>Sin filas en caja.</p>
-              <span>QR de ejemplo · también para pedidos en línea</span>
-              <div class="ticket__barcode" aria-hidden="true"></div>
-            </div>
-          </article>
+              <div class="ticket__rows" aria-hidden="true">
+                <p><span>3 Tacos al pastor</span><b>288.00</b></p>
+                <p><span>1 Quesadilla de flor</span><b>78.00</b></p>
+                <p><span>2 Agua de jamaica</span><b>70.00</b></p>
+                <p class="ticket__total"><span>Total</span><b>$436.00</b></p>
+              </div>
+              <div class="ticket__body">
+                <p class="ticket__kicker">Factura tu consumo</p>
+                <div class="ticket__qr">
+                  <div class="qr" data-qr role="img" aria-label="Código QR de ejemplo para facturar"></div>
+                  <span class="ticket__scan" aria-hidden="true"></span>
+                </div>
+                <p class="ticket__hint">Escanea con la cámara de tu celular</p>
+                <p class="ticket__cfdi">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg>
+                  CFDI 4.0
+                </p>
+              </div>
+              <div class="ticket__foot">
+                <p>Sin filas en caja.</p>
+                <span>QR de ejemplo · también para pedidos en línea</span>
+                <div class="ticket__barcode" aria-hidden="true"></div>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ============================================================
-         7. COMPARATIVO
+         7 · COMPARATIVO
          ============================================================ -->
-    <section class="section section--dark section--compare" id="comparativo" aria-labelledby="compare-title">
+    <section class="section section--dark compare" id="comparativo" aria-labelledby="compare-title">
       <div class="wrap">
-        <div class="section__head section__head--center">
-          <p class="eyebrow eyebrow--light">Comparativo</p>
-          <h2 data-reveal class="section__title" id="compare-title">Tu tienda Koon vs. una app de delivery</h2>
-          <p class="section__lead section__lead--light" data-reveal>El pedido es el mismo. La diferencia es quién se queda con el cliente, sus datos y tu marca.</p>
+        <div class="head head--split">
+          <div>
+            <p class="eyebrow" data-reveal>Comparativo</p>
+            <h2 class="h2" id="compare-title" data-split>Tu tienda Koon vs. una app de delivery</h2>
+          </div>
+          <p class="lead" data-reveal>El pedido es el mismo. La diferencia es quién se queda con el cliente, sus datos y tu marca.</p>
         </div>
 
-        <div class="compare-wrap" data-reveal>
-          <table class="compare">
-            <caption class="sr-only">Comparación entre tu tienda Koon y una app de delivery</caption>
-            <thead>
-              <tr>
-                <th scope="col">Lo que cambia</th>
-                <th scope="col">Tu tienda Koon</th>
-                <th scope="col">Una app de delivery</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Comisión por pedido</th>
-                <td><span class="compare__yes"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg>Sin comisión por pedido</span></td>
-                <td><span class="compare__no">Comisión en cada pedido</span></td>
-              </tr>
-              <tr>
-                <th scope="row">Dueño del cliente</th>
-                <td><span class="compare__yes"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg>El cliente es tuyo</span></td>
-                <td><span class="compare__no">El cliente es de la app</span></td>
-              </tr>
-              <tr>
-                <th scope="row">Datos del cliente</th>
-                <td><span class="compare__yes"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg>Tú tienes sus datos</span></td>
-                <td><span class="compare__no">Los datos se quedan en la app</span></td>
-              </tr>
-              <tr>
-                <th scope="row">Tu marca</th>
-                <td><span class="compare__yes"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg>Tu marca y tu menú</span></td>
-                <td><span class="compare__no">La app pone la cara</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <table class="vs">
+          <caption class="sr-only">Comparación entre tu tienda Koon y una app de delivery</caption>
+          <thead>
+            <tr>
+              <th scope="col">Lo que cambia</th>
+              <th scope="col" class="vs__koon">Tu tienda Koon</th>
+              <th scope="col">Una app de delivery</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-vs-row>
+              <th scope="row">Comisión por pedido</th>
+              <td class="vs__koon" data-label="Tu tienda Koon"><span class="yes"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg>Sin comisión por pedido</span></td>
+              <td data-label="Una app de delivery"><span class="no"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-x"></use></svg>Comisión en cada pedido</span></td>
+            </tr>
+            <tr data-vs-row>
+              <th scope="row">Dueño del cliente</th>
+              <td class="vs__koon" data-label="Tu tienda Koon"><span class="yes"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg>El cliente es tuyo</span></td>
+              <td data-label="Una app de delivery"><span class="no"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-x"></use></svg>El cliente es de la app</span></td>
+            </tr>
+            <tr data-vs-row>
+              <th scope="row">Datos del cliente</th>
+              <td class="vs__koon" data-label="Tu tienda Koon"><span class="yes"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg>Tú tienes sus datos</span></td>
+              <td data-label="Una app de delivery"><span class="no"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-x"></use></svg>Los datos se quedan en la app</span></td>
+            </tr>
+            <tr data-vs-row>
+              <th scope="row">Tu marca</th>
+              <td class="vs__koon" data-label="Tu tienda Koon"><span class="yes"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg>Tu marca y tu menú</span></td>
+              <td data-label="Una app de delivery"><span class="no"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-x"></use></svg>La app pone la cara</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
-        <!-- Versión móvil de la misma comparación: tarjetas apiladas -->
-        <div class="compare-mobile" data-reveal>
-          <article class="compare-card">
-            <h3>Comisión por pedido</h3>
-            <div class="compare-card__row">
-              <span class="compare-card__label">Tu tienda Koon</span>
-              <span class="compare__yes"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg>Sin comisión por pedido</span>
-            </div>
-            <div class="compare-card__row">
-              <span class="compare-card__label">Una app de delivery</span>
-              <span class="compare__no">Comisión en cada pedido</span>
-            </div>
-          </article>
+    <!-- ============================================================
+         Hecho para México · platos que ruedan
+         ============================================================ -->
+    <section class="mx" id="hecho-para-mexico" aria-labelledby="mx-title" data-mx>
+      <div class="mx__sticky">
+        <div class="mx__panel">
+          <h2 class="mx__title" id="mx-title"><span>Hecho para</span> <span>México</span></h2>
 
-          <article class="compare-card">
-            <h3>Dueño del cliente</h3>
-            <div class="compare-card__row">
-              <span class="compare-card__label">Tu tienda Koon</span>
-              <span class="compare__yes"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg>El cliente es tuyo</span>
-            </div>
-            <div class="compare-card__row">
-              <span class="compare-card__label">Una app de delivery</span>
-              <span class="compare__no">El cliente es de la app</span>
-            </div>
-          </article>
+          <div class="mx__plates" aria-hidden="true">
+            <img class="mx__plate" data-mx-plate src="assets/img/plato-tacos.webp" alt="" loading="lazy" width="720" height="720">
+            <img class="mx__plate" data-mx-plate src="assets/img/plato-pozole.webp" alt="" loading="lazy" width="720" height="720">
+            <img class="mx__plate" data-mx-plate src="assets/img/plato-dorados.webp" alt="" loading="lazy" width="720" height="720">
+            <img class="mx__plate" data-mx-plate src="assets/img/plato-sopa.webp" alt="" loading="lazy" width="720" height="720">
+            <img class="mx__plate" data-mx-plate src="assets/img/plato-quesadillas.webp" alt="" loading="lazy" width="720" height="720">
+          </div>
 
-          <article class="compare-card">
-            <h3>Datos del cliente</h3>
-            <div class="compare-card__row">
-              <span class="compare-card__label">Tu tienda Koon</span>
-              <span class="compare__yes"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg>Tú tienes sus datos</span>
-            </div>
-            <div class="compare-card__row">
-              <span class="compare-card__label">Una app de delivery</span>
-              <span class="compare__no">Los datos se quedan en la app</span>
-            </div>
-          </article>
-
-          <article class="compare-card">
-            <h3>Tu marca</h3>
-            <div class="compare-card__row">
-              <span class="compare-card__label">Tu tienda Koon</span>
-              <span class="compare__yes"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg>Tu marca y tu menú</span>
-            </div>
-            <div class="compare-card__row">
-              <span class="compare-card__label">Una app de delivery</span>
-              <span class="compare__no">La app pone la cara</span>
-            </div>
-          </article>
+          <div class="mx__foot">
+            <p class="mx__lead">CFDI, pesos y dólares, tickets y propina.</p>
+            <ul class="mx__tags" aria-label="Para quién es Koon">
+              <li>Taquerías</li>
+              <li>Cafeterías</li>
+              <li>Mariscos</li>
+              <li>Fondas</li>
+              <li>Comida rápida local</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ============================================================
-         8. PRUEBA SOCIAL
+         8 · PRUEBA SOCIAL (espacio reservado)
          ============================================================ -->
-    <section class="section section--testimonial" id="testimonios" aria-labelledby="testimonial-title">
+    <section class="section quote" id="testimonios" aria-labelledby="testimonial-title">
       <div class="wrap">
-        <h2 data-reveal class="sr-only" id="testimonial-title">Testimonio</h2>
+        <h2 class="sr-only" id="testimonial-title">Testimonio</h2>
 
-        <figure class="testimonial" data-reveal>
-          <div class="testimonial__person">
-            <div class="avatar" role="img" aria-label="Foto del cliente pendiente">
-              <span>FOTO<br>PENDIENTE</span>
-            </div>
-            <figcaption class="testimonial__caption">
+        <figure class="note" data-reveal>
+          <span class="note__pin" aria-hidden="true"></span>
+          <blockquote class="note__quote">
+            <p class="note__label">Testimonio</p>
+            <p class="note__text">[TESTIMONIO PENDIENTE — no inventar]</p>
+          </blockquote>
+          <div class="note__person">
+            <div class="avatar" role="img" aria-label="Foto del cliente pendiente"><span>FOTO<br>PENDIENTE</span></div>
+            <figcaption>
               <strong>[NOMBRE PENDIENTE]</strong>
               <span>[RESTAURANTE PENDIENTE]</span>
             </figcaption>
-            <div class="testimonial__stat">
+            <div class="note__stat">
               <strong>[CIFRA PENDIENTE]</strong>
               <span>Resultado del restaurante</span>
             </div>
           </div>
-
-          <blockquote class="testimonial__quote">
-            <p class="testimonial__label">Testimonio</p>
-            <span class="testimonial__mark" aria-hidden="true">“</span>
-            <p class="testimonial__text">[TESTIMONIO PENDIENTE — no inventar]</p>
-          </blockquote>
         </figure>
       </div>
     </section>
 
     <!-- ============================================================
-         9. PRECIOS
+         9 · PRECIOS
          ============================================================ -->
-    <section class="section section--pricing" id="precios" aria-labelledby="pricing-title">
+    <section class="section pricing" id="precios" aria-labelledby="pricing-title">
       <div class="wrap">
-        <div class="section__head section__head--center">
-          <p class="eyebrow">Precios</p>
-          <h2 data-reveal class="section__title" id="pricing-title">Un precio a la medida de tu restaurante</h2>
-          <p class="section__lead" data-reveal>Depende de tus sucursales, de tu equipo y de lo que necesitas cobrar. Te mandamos una propuesta clara en 24 horas.</p>
+        <div class="head head--split">
+          <div>
+            <p class="eyebrow" data-reveal>Precios</p>
+            <h2 class="h2" id="pricing-title" data-split>Un precio a la medida de tu restaurante</h2>
+          </div>
+          <p class="lead" data-reveal>Depende de tus sucursales, de tu equipo y de lo que necesitas cobrar. Te mandamos una propuesta clara en 24 horas.</p>
         </div>
 
         <!-- PENDIENTE: sustituir por tabla de planes si el cliente decide publicar precios -->
-        <div class="pricing-card" data-reveal>
-          <div class="pricing-card__copy">
-            <p class="pricing-card__kicker">Cotización</p>
-            <h3 class="pricing-card__title">Cotiza en 24 horas</h3>
-            <p class="pricing-card__text">Sin compromiso. Nos cuentas cómo operas y te decimos qué incluye y cuánto cuesta.</p>
-            <ul class="check-list">
-              <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Sin comisión por pedido.</span></li>
-              <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Te acompañamos en la instalación y la capacitación.</span></li>
-              <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Te explicamos qué incluye antes de que decidas.</span></li>
+        <div class="quote-card" data-reveal>
+          <div class="quote-card__time" aria-hidden="true">
+            <span class="quote-card__num" data-count="24">24</span><span class="quote-card__unit">h</span>
+          </div>
+          <div class="quote-card__copy">
+            <p class="quote-card__kicker">Cotización</p>
+            <h3 class="quote-card__title">Cotiza en 24 horas</h3>
+            <p class="quote-card__text">Sin compromiso. Nos cuentas cómo operas y te decimos qué incluye y cuánto cuesta.</p>
+            <ul class="checks">
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Sin comisión por pedido.</span></li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Te acompañamos en la instalación y la capacitación.</span></li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Te explicamos qué incluye antes de que decidas.</span></li>
             </ul>
           </div>
-
-          <div class="pricing-card__panel">
-            <p class="pricing-card__time"><span>24</span> h</p>
-            <p class="pricing-card__time-note">para tener tu propuesta.</p>
-            <a class="btn btn--primary btn--block" href="#agenda-tu-demo">
+          <div class="quote-card__panel">
+            <p class="quote-card__note"><b>24 h</b> para tener tu propuesta.</p>
+            <a class="btn btn--primary btn--lg btn--block" href="#agenda-tu-demo">
               <span>Agenda tu demo</span>
-              <svg class="btn__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M4 10h11M11 5.5 15.5 10 11 14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <svg class="btn__arrow" viewBox="0 0 20 20" aria-hidden="true"><use href="#icon-arrow"></use></svg>
             </a>
-            <a class="btn btn--outline btn--block" data-wa href="#agenda-tu-demo">
+            <a class="btn btn--ghost btn--lg btn--block" data-wa href="#agenda-tu-demo">
               <svg class="btn__wa" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-wa"></use></svg>
               <span>WhatsApp</span>
             </a>
-            <p class="pricing-card__small">Sin compromiso.</p>
+            <p class="quote-card__small">Sin compromiso.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ============================================================
-         10. IMPLEMENTACIÓN
+         10 · IMPLEMENTACIÓN
          ============================================================ -->
-    <section class="section section--impl" id="implementacion" aria-labelledby="impl-title">
+    <section class="section impl" id="implementacion" aria-labelledby="impl-title">
       <div class="wrap">
-        <div class="section__head section__head--center">
-          <p class="eyebrow">Implementación</p>
-          <h2 data-reveal class="section__title" id="impl-title">Empezamos en 3 pasos</h2>
-          <p class="section__lead" data-reveal>De tu menú actual a la primera comanda, con acompañamiento.</p>
+        <div class="head head--center">
+          <p class="eyebrow" data-reveal>Implementación</p>
+          <h2 class="h2" id="impl-title" data-split>Empezamos en 3 pasos</h2>
+          <p class="lead" data-reveal>De tu menú actual a la primera comanda, con acompañamiento.</p>
         </div>
 
-        <ol class="impl">
-          <li class="impl__step" data-reveal>
-            <span class="impl__num" aria-hidden="true">01</span>
+        <ol class="impl__steps">
+          <li class="icard" data-reveal="tilt" style="--r:-3deg; --d:0s">
+            <span class="icard__num" aria-hidden="true">01</span>
             <h3>Capturamos tu menú</h3>
             <p>Precios, categorías y modificadores. Lo dejamos listo contigo.</p>
           </li>
-          <li class="impl__step" data-reveal>
-            <span class="impl__num" aria-hidden="true">02</span>
+          <li class="icard" data-reveal="tilt" style="--r:2deg; --d:.12s">
+            <span class="icard__num" aria-hidden="true">02</span>
             <h3>Instalamos en tu sucursal</h3>
             <p>Caja, cocina e impresora, probados en tu operación.</p>
           </li>
-          <li class="impl__step" data-reveal>
-            <span class="impl__num" aria-hidden="true">03</span>
+          <li class="icard" data-reveal="tilt" style="--r:-1.500deg; --d:.24s">
+            <span class="icard__num" aria-hidden="true">03</span>
             <h3>Capacitamos a tu equipo</h3>
             <p>Una sesión práctica con meseros, cocina y caja.</p>
           </li>
+          <li class="impl__thread" aria-hidden="true">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" fill="none"><path data-draw d="M40 70 C 220 -10, 330 130, 520 60 S 820 -10, 980 70 S 1120 110, 1170 50" stroke="currentColor" stroke-width="2.500" stroke-linecap="round" stroke-dasharray="2 10"/></svg>
+          </li>
         </ol>
 
-        <p class="impl__quote" data-reveal>No vendemos por vender. Te acompañamos en la implementación.</p>
+        <p class="impl__quote" data-split>No vendemos por vender. Te acompañamos en la implementación.</p>
       </div>
     </section>
 
     <!-- ============================================================
-         11. PREGUNTAS FRECUENTES
+         11 · PREGUNTAS FRECUENTES
          ============================================================ -->
-    <section class="section section--gris section--faq" id="preguntas" aria-labelledby="faq-title">
-      <div class="wrap faq__layout">
+    <section class="section faq" id="preguntas" aria-labelledby="faq-title">
+      <div class="wrap faq__grid">
         <div class="faq__intro">
-          <p class="eyebrow">Preguntas frecuentes</p>
-          <h2 data-reveal class="section__title" id="faq-title">Lo que suelen preguntarnos</h2>
-          <p class="section__lead" data-reveal>Sin letras chiquitas. Si algo no está aquí, pregúntanos sin compromiso.</p>
-          <a class="link-arrow" data-wa href="#agenda-tu-demo">
+          <p class="eyebrow" data-reveal>Preguntas frecuentes</p>
+          <h2 class="h2" id="faq-title" data-split>Lo que suelen preguntarnos</h2>
+          <p class="lead" data-reveal>Sin letras chiquitas. Si algo no está aquí, pregúntanos sin compromiso.</p>
+          <a class="link" data-wa href="#agenda-tu-demo" data-reveal>
             Escríbenos por WhatsApp
-            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M4 10h11M11 5.5 15.5 10 11 14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><use href="#icon-arrow"></use></svg>
           </a>
         </div>
 
@@ -885,49 +953,28 @@
     </section>
 
     <!-- ============================================================
-         12. CTA FINAL
+         12 · CTA FINAL
          ============================================================ -->
-    <section class="section section--dark section--cta" id="agenda-tu-demo" aria-labelledby="cta-title">
+    <section class="section section--dark cta" id="agenda-tu-demo" aria-labelledby="cta-title">
+      <img class="plate plate--c1" src="assets/img/plato-tacos.webp" alt="" loading="lazy" width="720" height="720" data-plate data-speed="-0.25" data-spin="50">
       <div class="wrap cta__grid">
         <div class="cta__copy">
-          <p class="eyebrow eyebrow--light">Agenda tu demo</p>
-          <h2 data-reveal class="cta__title" id="cta-title">Agenda tu demo y hablemos de tu restaurante</h2>
-          <p class="cta__lead" data-reveal>Te mostramos la tienda, la cocina y la facturación con tu menú. Sin compromiso.</p>
+          <p class="eyebrow" data-reveal>Agenda tu demo</p>
+          <h2 class="h2 h2--xl" id="cta-title" data-split>Agenda tu demo y hablemos de tu restaurante</h2>
+          <p class="lead" data-reveal>Te mostramos la tienda, la cocina y la facturación con tu menú. Sin compromiso.</p>
 
-          <ul class="check-list check-list--light cta__checks" data-reveal>
-            <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Vemos tu menú y tu operación.</span></li>
-            <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Resolvemos tus dudas.</span></li>
-            <li><svg class="check-list__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Te decimos cómo empezar.</span></li>
+          <ul class="checks checks--lg" data-reveal>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Vemos tu menú y tu operación.</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Resolvemos tus dudas.</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span>Te decimos cómo empezar.</span></li>
           </ul>
-
-          <div class="iso-scene" data-reveal aria-hidden="true">
-            <svg viewBox="0 0 320 190" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <ellipse cx="170" cy="166" rx="118" ry="14" fill="#000000" opacity=".18"/>
-              <polygon points="185,70 225,50 265,70 225,90" fill="#4BD3A0"/>
-              <polygon points="185,70 225,90 225,130 185,110" fill="#00A86B"/>
-              <polygon points="225,90 265,70 265,110 225,130" fill="#00885A"/>
-              <polygon points="70,92 110,72 150,92 110,112" fill="#FF8A5C"/>
-              <polygon points="70,92 110,112 110,152 70,132" fill="#D64512"/>
-              <polygon points="110,112 150,92 150,132 110,152" fill="#FF5A1F"/>
-              <polygon points="135,122 165,107 195,122 165,137" fill="#3B628C"/>
-              <polygon points="135,122 165,137 165,167 135,152" fill="#1E3550"/>
-              <polygon points="165,137 195,122 195,152 165,167" fill="#27496D"/>
-              <polygon points="145,120 170,108 195,120 170,132" fill="#FFFFFF"/>
-              <path d="M156 119 177 109" stroke="#FF5A1F" stroke-width="3" stroke-linecap="round"/>
-              <path d="M156 124 172 116" stroke="#00A86B" stroke-width="2" stroke-linecap="round"/>
-              <polygon points="181,116 187,113 187,119 181,122" fill="#111827"/>
-              <circle cx="272" cy="40" r="4" fill="#FF5A1F"/>
-              <circle cx="52" cy="55" r="3" fill="#00A86B"/>
-              <circle cx="292" cy="88" r="2.5" fill="#FFFFFF" opacity=".55"/>
-              <path d="M42 28l2.2 6.3L50.5 36l-6.3 2.2L42 44.5l-2.2-6.3L33.5 36l6.3-1.7L42 28Z" fill="#FFFFFF" opacity=".7"/>
-            </svg>
-          </div>
         </div>
 
-        <div class="cta__form-wrap" data-reveal>
-          <form class="demo-form" id="demo-form" novalidate>
-            <h3 class="demo-form__title">Déjanos tus datos</h3>
-            <p class="demo-form__note">Todos los campos son obligatorios.</p>
+        <div class="cta__form" data-reveal="tilt" style="--r:1.500deg">
+          <form class="form" id="demo-form" novalidate>
+            <p class="form__kicker" aria-hidden="true"><span>Comanda</span><span>Demo</span></p>
+            <h3 class="form__title">Déjanos tus datos</h3>
+            <p class="form__note">Todos los campos son obligatorios.</p>
 
             <div class="field">
               <label for="nombre">Nombre<span class="field__req" aria-hidden="true">*</span></label>
@@ -948,19 +995,17 @@
               <p class="field__error" id="restaurante-error" aria-live="polite"></p>
             </div>
 
-            <button class="btn btn--primary btn--block demo-form__submit" type="submit">
+            <button class="btn btn--primary btn--lg btn--block form__submit" type="submit">
               <span class="btn__label">Agenda tu demo</span>
-              <svg class="btn__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M4 10h11M11 5.5 15.5 10 11 14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <svg class="btn__arrow" viewBox="0 0 20 20" aria-hidden="true"><use href="#icon-arrow"></use></svg>
             </button>
 
-            <a class="btn btn--outline btn--block" data-wa href="#whatsapp">
+            <a class="btn btn--ghost btn--lg btn--block" data-wa href="#whatsapp">
               <svg class="btn__wa" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-wa"></use></svg>
               <span>Prefiero WhatsApp</span>
             </a>
 
-            <p class="demo-form__legal">Al enviar, aceptas nuestro <a href="legales.html#aviso">aviso de privacidad</a>.</p>
+            <p class="form__legal">Al enviar, aceptas nuestro <a href="legales.html#aviso">aviso de privacidad</a>.</p>
           </form>
         </div>
       </div>
@@ -968,17 +1013,13 @@
   </main>
 
   <!-- ============================================================
-       13. PIE
+       13 · PIE
        ============================================================ -->
-  <footer class="site-footer" id="contacto">
+  <footer class="footer" id="contacto">
     <div class="wrap">
       <div class="footer__grid">
         <div class="footer__brand">
-          <a class="logo footer__logo" href="#inicio" aria-label="Koon, ir al inicio">
-            <span class="logo__mark" aria-hidden="true">K</span>
-            <span class="logo__name">Koon</span>
-          </a>
-          <p>Caja, tienda en línea y facturación para tu restaurante.</p>
+          <p class="footer__claim">Caja, tienda en línea y facturación para tu restaurante.</p>
         </div>
 
         <div class="footer__col">
@@ -998,10 +1039,14 @@
         </div>
 
         <div class="footer__indexsa">
-          <div class="logo-placeholder" role="img" aria-label="Logo de INDEXSA pendiente">LOGO</div>
+          <div class="logo-slot" role="img" aria-label="Logo de INDEXSA pendiente">LOGO</div>
           <p>Un producto de<br><strong>INDEXSA TECHNOLOGIES</strong></p>
         </div>
       </div>
+
+      <a class="footer__word" href="#inicio" aria-label="Koon, ir al inicio" data-word>
+        <span aria-hidden="true">K</span><span aria-hidden="true">o</span><span aria-hidden="true">o</span><span aria-hidden="true">n</span>
+      </a>
 
       <div class="footer__bottom">
         <p>© <span data-year>2026</span> Koon · INDEXSA TECHNOLOGIES</p>
@@ -1015,6 +1060,10 @@
     <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-wa"></use></svg>
   </a>
 
+  <script src="assets/vendor/gsap.min.js" defer></script>
+  <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="assets/vendor/lenis.min.js" defer></script>
   <script src="script.js" defer></script>
+  <script src="motion.js" defer></script>
 </body>
 </html>

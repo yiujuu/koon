@@ -1,53 +1,55 @@
 # Assets de Koon
 
-En esta revisión hay fotografías temporales de stock para mostrar el impacto
-visual. No son clientes reales, no representan a Koon ni a INDEXSA y deben
-sustituirse por fotografía propia antes de publicar.
+Todo lo que hay aquí es provisional salvo `vendor/`.
 
-## Fotografías temporales
+## Platos (`img/`)
 
-| Uso | Archivo remoto | Fuente |
-| --- | --- | --- |
-| Hero, pantalla de cocina | `photo-2696064` | https://www.pexels.com/photo/2696064/ |
-| Hero, pedido en el celular | `photo-2092507` | https://www.pexels.com/photo/2092507/ |
-| Función Punto de venta y cocina | `photo-887827` | https://www.pexels.com/photo/887827/ |
-| Función Tienda en línea | `photo-4958792` | https://www.pexels.com/photo/4958792/ |
-| Función Facturación | `photo-302899` | https://www.pexels.com/photo/302899/ |
-| Función Multisucursal | `photo-67468` | https://www.pexels.com/photo/67468/ |
+Fotografías de Pexels en vista cenital, recortadas en círculo y guardadas como
+WebP de 720 px con transparencia. No son platillos de un cliente real; hay que
+sustituirlas por fotografía propia antes de publicar.
+
+| Archivo | Fuente |
+| --- | --- |
+| `plato-tacos.webp` | https://www.pexels.com/photo/5848703/ |
+| `plato-dorados.webp` | https://www.pexels.com/photo/3391962/ |
+| `plato-pozole.webp` | https://www.pexels.com/photo/16235561/ |
+| `plato-pozole-rojo.webp` | https://www.pexels.com/photo/16235564/ |
+| `plato-quesadillas.webp` | https://www.pexels.com/photo/31009742/ |
+| `plato-sopa.webp` | https://www.pexels.com/photo/9251294/ |
 
 Licencia de Pexels: https://www.pexels.com/license/
 
-El testimonio conserva el placeholder **FOTO PENDIENTE** y el texto
-`[TESTIMONIO PENDIENTE — no inventar]`; no se usó una foto de una persona para
-evitar presentar un cliente falso.
+Para reemplazarlas: foto cenital del plato completo, recorte cuadrado ajustado
+al borde del plato, fondo transparente, 720 × 720 px, mismo nombre de archivo.
 
-## Capturas definitivas
+## Pantallas del producto
 
-Cuando estén las capturas reales del producto, guárdalas aquí con estos nombres
-y medidas:
+No son imágenes: están dibujadas en HTML en `index.html` con estilos de
+`mockups.css`. Cuando lleguen las capturas reales, cada una entra dentro de su
+contenedor `.feat__media` (o `.hero__art`) en lugar del bloque dibujado.
 
-| Archivo | Uso | Medida sugerida |
+| Bloque | Dónde | Captura que lo sustituye |
 | --- | --- | --- |
-| `pedido-movil.png` | Pedido en el celular (hero) | 720 × 1520 px |
-| `comanda-cocina.png` | La misma comanda en cocina | 1600 × 1000 px |
-| `captura-punto-de-venta.png` | Punto de venta y cocina | 1600 × 1000 px |
-| `captura-tienda.png` | Tienda en línea propia | 1600 × 1000 px |
-| `captura-facturacion.png` | Facturación | 1600 × 1000 px |
-| `captura-multisucursal.png` | Multisucursal | 1600 × 1000 px |
-| `foto-testimonio.jpg` | Foto circular del testimonio | 400 × 400 px |
-| `logo-indexsa.svg` | Logo definitivo de INDEXSA | Vectorial |
-| `og-koon.jpg` | Imagen para compartir el enlace | 1200 × 630 px |
+| `.kds` | Hero | Pantalla de cocina, 1600 × 1000 px |
+| `.store` (en `.phone`) | Hero y Funciones 02 | Tienda en línea, 720 × 1520 px |
+| `.pos` | Funciones 01 | Caja, 1600 × 1000 px |
+| `.portal` (en `.phone`) | Funciones 03 | Portal de facturación, 720 × 1520 px |
+| `.panel` | Funciones 04 | Panel de sucursales, 1600 × 1000 px |
 
-Notas:
+Los nombres, precios, folios y sucursales que aparecen son de ejemplo.
 
-- El QR del ticket es una ilustración generada con JavaScript; no necesita archivo.
-- El número de WhatsApp se configura en `script.js` (`WHATSAPP_NUMBER`).
-- Los datos del testimonio y las respuestas del FAQ quedan pendientes de validación.
-- Las fotos temporales se sirven por URL; si se publican, conviene descargarlas y
-  servirlas desde este directorio.
+## Otros pendientes
 
-Reglas para las fotos definitivas:
+| Archivo | Uso |
+| --- | --- |
+| `foto-testimonio.jpg` | Foto circular del testimonio, 400 × 400 px |
+| `logo-indexsa.svg` | Logo de INDEXSA para el pie |
+| `og-koon.jpg` | Imagen para compartir el enlace, 1200 × 630 px |
 
-- Sin nombres de restaurantes, cifras ni testimonios inventados.
-- Sin datos reales de clientes.
-- Fotografía propia o con licencia, no banco de imágenes genérico.
+- El QR del ticket se genera con JavaScript; no es un QR funcional.
+- El testimonio conserva sus textos `[PENDIENTE]`; no se inventó prueba social.
+
+## `vendor/`
+
+GSAP 3.12.5, ScrollTrigger 3.12.5 y Lenis 1.1.14, servidos desde el propio
+sitio para no depender de un CDN.
