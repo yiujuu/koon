@@ -1,6 +1,7 @@
 /* ==========================================================================
    KOON · Landing — Fase 5 «La comanda»
-   Sistema: fondo hueso, tinta café, un solo acento chile.
+   Sistema: fondo hueso, tinta café y un solo color principal (--chile, hoy verde #1F8A4C;
+   el nombre de la variable viene de la primera propuesta en naranja).
    Display: Bricolage Grotesque · Texto: Figtree
    Índice
    1. Tokens y base        7. Funciones
@@ -22,9 +23,13 @@
   --tinta-3: #8B8076;
   --linea: #E0D7C6;
   --linea-2: #CFC4B0;
-  --chile: #F0481E;
-  --chile-hondo: #C4360F;
-  --chile-suave: #FBDCCF;
+  /* Color principal. Todo lo demás se deriva de aquí (ver playground.js). */
+  --chile: #1F8A4C;
+  --chile-hondo: color-mix(in oklab, var(--chile) 80%, #000);
+  --chile-suave: color-mix(in oklab, var(--chile) 20%, var(--papel));
+  --chile-vivo: color-mix(in oklab, var(--chile) 88%, #fff);
+  --en-chile: var(--papel);        /* texto e iconos sobre el color principal */
+  --titulo-chile: var(--papel);    /* título gigante sobre el color principal */
   --hierba: #1F8A4C;
   --hierba-hondo: #166B3A;
   --hierba-suave: #DCEEDD;
@@ -79,7 +84,7 @@ a { color: inherit; text-decoration: none; }
 button, input { font: inherit; color: inherit; }
 table { border-collapse: collapse; width: 100%; }
 
-::selection { background: var(--chile); color: var(--tinta); }
+::selection { background: var(--chile); color: var(--en-chile); }
 
 :focus-visible {
   outline: 2.5px solid var(--chile);
@@ -209,10 +214,10 @@ table { border-collapse: collapse; width: 100%; }
 .btn--block { width: 100%; }
 
 .btn--primary {
-  background: var(--chile); color: var(--tinta);
+  background: var(--chile); color: var(--en-chile);
   box-shadow: 0 4px 0 0 var(--tinta);
 }
-.btn--primary:hover { translate: 0 -2px; box-shadow: 0 6px 0 0 var(--tinta); background: #FF5A2E; }
+.btn--primary:hover { translate: 0 -2px; box-shadow: 0 6px 0 0 var(--tinta); background: var(--chile-vivo); }
 .btn--primary:active { translate: 0 3px; box-shadow: 0 1px 0 0 var(--tinta); transition-duration: .07s; }
 .section--dark .btn--primary, .footer .btn--primary { box-shadow: 0 4px 0 0 #000; }
 
@@ -256,7 +261,7 @@ table { border-collapse: collapse; width: 100%; }
 .logo__mark {
   display: grid; place-items: center;
   width: 34px; height: 34px; border-radius: 11px;
-  background: var(--chile); color: var(--tinta);
+  background: var(--chile); color: var(--en-chile);
   rotate: -6deg; transition: rotate .4s var(--ease);
 }
 .logo__mark svg { width: 24px; height: 24px; }
@@ -359,7 +364,7 @@ table { border-collapse: collapse; width: 100%; }
   margin-block: clamp(20px, 4vw, 56px) clamp(8px, 2vw, 24px);
   width: 108vw; margin-left: -4vw;
   rotate: -2deg;
-  background: var(--chile); color: var(--tinta);
+  background: var(--chile); color: var(--en-chile);
   overflow: hidden;
 }
 .ribbon__track { display: flex; width: max-content; will-change: transform; }
@@ -403,7 +408,7 @@ table { border-collapse: collapse; width: 100%; }
 .pain__no::after { content: "Koon"; color: var(--chile); }
 .pain__icon {
   display: grid; place-items: center; width: 60px; height: 60px; margin-bottom: 24px;
-  border-radius: 18px; background: var(--chile); color: var(--tinta);
+  border-radius: 18px; background: var(--chile); color: var(--en-chile);
   rotate: -5deg;
 }
 .pain__icon svg { width: 30px; height: 30px; }
@@ -524,7 +529,7 @@ table { border-collapse: collapse; width: 100%; }
 }
 .feat__media[data-feat-media="1"] { --tint: var(--chile-suave); }
 .feat__media[data-feat-media="2"] { --tint: var(--maiz-suave); }
-.feat__media[data-feat-media="3"] { --tint: var(--hierba-suave); }
+.feat__media[data-feat-media="3"] { --tint: var(--cafe-2); }
 @media (min-width: 600px) { .feat__media { aspect-ratio: 6 / 5; } }
 
 .feats__stage { display: none; }
@@ -548,7 +553,7 @@ table { border-collapse: collapse; width: 100%; }
   }
   .feats.is-staged .feats__stage[data-active="1"] { background: var(--chile-suave); }
   .feats.is-staged .feats__stage[data-active="2"] { background: var(--maiz-suave); }
-  .feats.is-staged .feats__stage[data-active="3"] { background: var(--hierba-suave); }
+  .feats.is-staged .feats__stage[data-active="3"] { background: var(--cafe-2); }
 
   .feats__stage .feat__media {
     position: absolute; inset: 0; aspect-ratio: auto;
@@ -575,7 +580,7 @@ table { border-collapse: collapse; width: 100%; }
 }
 .inv-steps b {
   display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
-  background: var(--chile); color: var(--tinta);
+  background: var(--chile); color: var(--en-chile);
   font-family: var(--display); font-size: 1.125rem;
 }
 
@@ -616,7 +621,7 @@ table { border-collapse: collapse; width: 100%; }
 .qr span.is-on { background: var(--tinta); }
 .ticket__scan {
   position: absolute; left: 6px; right: 6px; top: 0; height: 3px; border-radius: 3px;
-  background: var(--chile); box-shadow: 0 0 14px 3px rgba(240, 72, 30, .55);
+  background: var(--chile); box-shadow: 0 0 14px 3px color-mix(in srgb, var(--chile) 55%, transparent);
   animation: scan 2.6s var(--ease-io) infinite alternate;
 }
 @keyframes scan { from { translate: 0 10px; } to { translate: 0 176px; } }
@@ -649,7 +654,7 @@ table { border-collapse: collapse; width: 100%; }
   color: rgba(246, 241, 231, .6);
 }
 .vs thead th.vs__koon {
-  color: var(--tinta); background: var(--chile); border-radius: 24px 24px 0 0;
+  color: var(--en-chile); background: var(--chile); border-radius: 24px 24px 0 0;
   font-family: var(--display); font-size: 1.25rem; letter-spacing: -.02em; text-transform: none; font-weight: 800;
 }
 .vs tbody th {
@@ -657,11 +662,11 @@ table { border-collapse: collapse; width: 100%; }
   border-top: 1px solid rgba(246, 241, 231, .16); padding-left: 0;
 }
 .vs tbody td { border-top: 1px solid rgba(246, 241, 231, .16); font-size: 1.1875rem; }
-.vs tbody td.vs__koon { background: var(--chile); color: var(--tinta); border-top-color: rgba(28, 22, 18, .18); font-weight: 600; font-size: 1.3125rem; }
+.vs tbody td.vs__koon { background: var(--chile); color: var(--en-chile); border-top-color: color-mix(in srgb, var(--en-chile) 18%, transparent); font-weight: 600; font-size: 1.3125rem; }
 .vs tbody tr:last-child td.vs__koon { border-radius: 0 0 24px 24px; }
 .vs tbody tr:last-child th, .vs tbody tr:last-child td:not(.vs__koon) { border-bottom: 1px solid rgba(246, 241, 231, .16); }
 .yes, .no { display: inline-flex; align-items: center; gap: 12px; }
-.yes svg { flex: none; width: 30px; height: 30px; padding: 6px; border-radius: 50%; background: var(--tinta); color: var(--maiz); }
+.yes svg { flex: none; width: 30px; height: 30px; padding: 6px; border-radius: 50%; background: var(--en-chile); color: var(--chile); }
 .no { color: rgba(246, 241, 231, .58); }
 .no svg { flex: none; width: 30px; height: 30px; padding: 7px; border-radius: 50%; background: rgba(246, 241, 231, .1); color: rgba(246, 241, 231, .6); }
 
@@ -688,13 +693,13 @@ table { border-collapse: collapse; width: 100%; }
   min-height: min(880px, 100svh - 24px);
   padding: clamp(72px, 10vh, 120px) var(--gut) clamp(36px, 6vh, 64px);
   border-radius: clamp(24px, 3vw, 44px);
-  background: var(--chile); color: var(--tinta);
+  background: var(--chile); color: var(--en-chile);
   text-align: center;
 }
 .mx__title {
   font-family: var(--display); font-weight: 800;
   font-size: clamp(4rem, 16.5vw, 15.5rem);
-  line-height: .8; letter-spacing: -.06em; color: var(--papel);
+  line-height: .8; letter-spacing: -.06em; color: var(--titulo-chile);
   font-variation-settings: "opsz" 96;
 }
 .mx__title span { display: block; will-change: transform; }
@@ -714,7 +719,7 @@ table { border-collapse: collapse; width: 100%; }
 .mx__tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
 .mx__tags li {
   padding: 8px 16px; border-radius: 999px;
-  background: var(--tinta); color: var(--hueso); font-weight: 600; font-size: .9375rem;
+  background: var(--en-chile); color: var(--chile); font-weight: 600; font-size: .9375rem;
 }
 .motion .mx { height: 200vh; }
 @media (min-width: 860px) { .motion .mx { height: 240vh; } }
@@ -832,7 +837,7 @@ table { border-collapse: collapse; width: 100%; }
   background: currentColor; translate: -50% -50%; transition: rotate .45s var(--ease);
 }
 .faq__icon::after { rotate: 90deg; }
-.faq__item.is-open .faq__icon { background: var(--chile); color: var(--tinta); rotate: 180deg; }
+.faq__item.is-open .faq__icon { background: var(--chile); color: var(--en-chile); rotate: 180deg; }
 .faq__item.is-open .faq__icon::after { rotate: 0deg; }
 .faq__panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .5s var(--ease); }
 .faq__item.is-open .faq__panel { grid-template-rows: 1fr; }

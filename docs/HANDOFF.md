@@ -48,6 +48,8 @@ python3 -m http.server 5500 --bind 127.0.0.1
   captura real dentro de su `.feat__media`.
 - `motion.js`: una función por pieza (hero, cinta, pila, flujo, escenario,
   impresora, platos, pie). Sin GSAP la página sigue completa.
+- `playground.js`: selector de color para el cliente; solo se carga con
+  `?colores` en la dirección. Cambia `--chile`, `--en-chile` y `--titulo-chile`.
 - `script.js`: sin cambios de lógica (formulario, acordeón, QR, WhatsApp,
   flotante). Solo se quitaron el reveal y la barra, que ahora viven en
   `motion.js`.
@@ -62,7 +64,9 @@ python3 -m http.server 5500 --bind 127.0.0.1
 2. **Datos de las pantallas dibujadas** («Tu Taquería», platillos, precios,
    folios, sucursales Centro / Boca del Río / Xalapa) son de ejemplo. No son
    clientes ni cifras reales.
-3. **Botones naranjas con texto oscuro**, igual que en la Fase 4, por contraste.
+3. **Color principal verde `#1F8A4C`** por defecto (el cliente no quería
+   naranja). El texto de los botones es claro y queda en ≈4.3:1, justo por
+   debajo de AA; ver README. El naranja sigue disponible en `?colores`.
 4. **Dos familias tipográficas**, como pide el brief. El ticket no usa
    monoespaciada por eso.
 5. **Nada prometido que no exista:** no se mencionan Uber Eats, lealtad,

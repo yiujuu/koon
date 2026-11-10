@@ -6,7 +6,7 @@
   <title>Koon · Caja, tienda en línea y facturación para restaurantes</title>
   <meta name="description" content="Koon es la caja y la tienda en línea de tu restaurante: cobra, vende en línea y factura CFDI 4.0 sin comisión por pedido. Agenda una demo.">
   <meta name="theme-color" content="#F6F1E7">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23F0481E'/%3E%3Cpath d='M22 16v32M22 33l19-17M28 28l15 20' fill='none' stroke='%231C1612' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%231F8A4C'/%3E%3Cpath d='M22 16v32M22 33l19-17M28 28l15 20' fill='none' stroke='%23FFFDF8' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 
   <!-- Los estados iniciales de las animaciones solo existen si hay JS -->
   <script>
@@ -1065,5 +1065,7 @@
   <script src="assets/vendor/lenis.min.js" defer></script>
   <script src="script.js" defer></script>
   <script src="motion.js" defer></script>
+  <!-- Selector de color para el cliente: solo aparece con ?colores en la dirección -->
+  <script>if (/[?&]colores(=|&|$)/.test(location.search)) { var s = document.createElement('script'); s.src = 'playground.js'; document.body.appendChild(s); }</script>
 </body>
 </html>
