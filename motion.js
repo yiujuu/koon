@@ -228,9 +228,9 @@
       if (dy !== 0) dir = dy > 0 ? -1 : 1;
       boost += (Math.abs(dy) * 0.9 - boost) * 0.12;
       var w = set.offsetWidth;
-      x += dir * (0.06 * delta + boost);
-      if (x <= -w) x += w;
-      if (x > 0) x -= w;
+      // delta acotado: al volver de otra pestaña puede venir enorme
+      x += dir * (0.06 * Math.min(delta, 50) + Math.min(boost, 60));
+      if (w > 0) x = (((x % w) + w) % w) - w;
       track.style.transform = 'translate3d(' + x.toFixed(1) + 'px,0,0)';
     });
   }
